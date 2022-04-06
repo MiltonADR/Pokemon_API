@@ -1,4 +1,4 @@
-const contenedorPokemon = document.getElementById('pokemon-container');
+const contenedorPokemon = document.getElementById('contenedor_pokemon');
 
 
 const mostrarPokemon = (id) => {
@@ -28,30 +28,35 @@ const mostrarPokemones = number => {
 const crearPokemon = pokemon => {
 
     const card = document.createElement('div');
-    card.classList.add('pokemon-block');
-
-    const spriteContainer = document.createElement('div');
-    spriteContainer.classList.add('img-container');
+    card.classList.add('card');
 
     const sprite = document.createElement('img');
+    sprite.classList.add('sprite');
     sprite.src = pokemon.sprites.front_default;
 
-    spriteContainer.appendChild(sprite);
+
+    const carBody = document.createElement('div');
+    carBody.classList.add('card_body');
+
+    const name = document.createElement('h5');
+    name.classList.add('name');
+    name.textContent = pokemon.name;
+
 
     const number = document.createElement('p');
     number.textContent = `#${pokemon.id.toString().padStart(3,0)}`;
 
-    const name = document.createElement('p');
-    name.classList.add('name');
-    name.textContent = pokemon.name;
+    carBody.appendChild(name);
+    carBody.appendChild(number);
+    
+    card.appendChild(sprite);
+    card.appendChild(carBody);
 
-    card.appendChild(spriteContainer);
-    card.appendChild(number);
-    card.appendChild(name);
+  
 
     contenedorPokemon.appendChild(card);
     
 
 }
 
-mostrarPokemones(10);
+mostrarPokemones(12);
